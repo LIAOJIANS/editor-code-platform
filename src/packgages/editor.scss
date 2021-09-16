@@ -104,7 +104,11 @@
         border: 3px dashed red
     }
 }
-
+.editor-block-preview{
+    &::after{
+        display:none
+    }
+}
 // 移动left值
 .line-x {
     position: absolute;
@@ -118,4 +122,27 @@
     left:0;
     right:0;
     border-top: 1px dashed red;
+}
+
+
+
+// dropdown 
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background: #fff;
+    box-shadow:  2px 2px #ccc;
+}
+.dropdown-isShow{
+    display: block;
+}
+.dropdown-item{
+    line-height: 30px;
+    width:100px;
+    border-bottom:  1px solid #ccc;;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+
 }

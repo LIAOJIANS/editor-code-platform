@@ -1,9 +1,10 @@
-import { computed, ref } from 'vue'
+import { computed, ref, ComputedRef, Ref } from 'vue'
 import { IBaseConfigBlocks, IBaseConfigData } from "@/modules/InterEditor";
 
 
 export function useFocus(
-  data: { value: IBaseConfigData },
+  data: ComputedRef<IBaseConfigData>,
+  previewRef: Ref,
   cb: (e: MouseEvent) => void
 ) {
   const selectIndex = ref(-1) // -1表示没有一个元素被选中
@@ -27,6 +28,9 @@ export function useFocus(
   }
 
   const containerMousedown = () => {
+    if(previewRef.value) {
+      return
+    }
     clearBlockFocus()
     selectIndex.value = -1
   }
@@ -36,6 +40,9 @@ export function useFocus(
     block: IBaseConfigBlocks,
     index: number
   ) => {
+    if(previewRef.value) {
+      return
+    }
     e.preventDefault()
     e.stopPropagation()
 
@@ -56,6 +63,7 @@ export function useFocus(
     blockMousedown,
     containerMousedown,
     lastSelectBlock,
-    focusData
+    focusData,
+    clearBlockFocus
   }
 }

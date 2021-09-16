@@ -10,7 +10,6 @@ import {
   ElInput 
 } from 'element-plus'
 
-
 function createEditorConfig(): IRegisterConfig {
   const componentList: IComponentConfig[] = []
   const componentMap: { [key: string]: any } = {}
@@ -47,5 +46,4 @@ registerConfig.register({
   preview: () => <ElInput placeholder="预览输入框"></ElInput>,
   render: () => <ElInput placeholder="渲染输入框"></ElInput>,
   key: EComponentKey.input
-});
-
+})
